@@ -1,9 +1,10 @@
-const db = require("../models/model");
+const ExerciseModel = require("../models/model");
+
 
 module.exports = function (app) {
 
     app.get("/api/workouts", (req, res) => {
-        db.find({})
+        ExerciseModel.find({})
             .then(workout => {
                 res.json(workout);
             })
@@ -13,7 +14,7 @@ module.exports = function (app) {
     })
 
     app.post("/api/workouts", (req, res) => {
-        db.create({})
+        ExerciseModel.create({})
             .then(workout => {
                 res.json(workout);
             })
@@ -22,8 +23,14 @@ module.exports = function (app) {
             });
     })
 
-    // app.put("/api/workouts/:id", (req, res) => {
-    //     db.findByIdAndUpdate(id, function (err, db) {})
-    //         .then
-    // })
+    app.put("/api/workouts/:id", (req, res) => {
+        ExerciseModel.findByIdAndUpdate(
+            {
+                _id: params.id, function (err, exercises) {}
+        
+             })
+            .then(workout => {
+               res.json($push(workout)
+            })
+    })
 }
