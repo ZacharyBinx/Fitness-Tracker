@@ -26,26 +26,29 @@ const exerciseSchema = new Schema({
         weight: {
             type: Number,
             trim: true,
-            
+
         },
         reps: {
             type: Number,
             trim: true,
-            
+
         },
         sets: {
             type: Number,
             trim: true,
-            
+
         },
         distance: {
             type: Number,
             trim: true,
-            
+
         },
     }],
 },
     {
+        // toObject: {
+        //     virtuals: true
+        // },
         toJSON:
         {
             virtuals: true
