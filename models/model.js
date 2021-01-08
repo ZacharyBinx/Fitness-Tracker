@@ -46,10 +46,10 @@ const exerciseSchema = new Schema({
     }],
 },
     {
-        //code used with virtuals, commented out until 
-        // toObject: {
-        //     virtuals: true
-        // },
+        //code used with virtuals
+        toObject: {
+            virtuals: true
+        },
         toJSON:
         {
             virtuals: true

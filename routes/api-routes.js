@@ -34,23 +34,13 @@ module.exports = function (app) {
         });
     })
 
-    app.get("/api/workouts/range", async function (req, res) {
-        try {
-            res.json((
-                await ExerciseModel.aggregate([
-                    {
-                        $addFields: {
-                            totalDuration: {
-                                $sum: "$exercises.duration",
-                            },
-                        },
-                    },
-                ])
-                    .sort({ day: -1 })
-                    .limit(7)
-            ).reverse());
-        } catch (err) {
-            res.status(500).end();
-        }
-    });
+    app.get("/api/workouts/range", (req, res) => {
+        ExerciseModel.find({}).sort({ day: -1 }).limit(7)
+            .then(workout => {
+                res.json(workout.reverse());
+            })
+            .catch(err => {
+                res.json(err);
+            });
+    })
 }
